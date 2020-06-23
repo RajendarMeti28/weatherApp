@@ -2,7 +2,7 @@ import * as ActionTypes from './ActionTypes';
 
 export const fetchWeather = (location) => (dispatch) => {
 
-    var url = 'http://api.openweathermap.org/data/2.5/weather?q='+location+'&units=metric&appid=8892ca5dd6e323b1c6f18c1e736b89fa';
+    var url = 'https://api.openweathermap.org/data/2.5/weather?q='+location+'&units=metric&appid=8892ca5dd6e323b1c6f18c1e736b89fa';
     return fetch(url)
     .then(response => {
         if (response.ok) {

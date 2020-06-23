@@ -7,7 +7,7 @@ import { Form, Control } from 'react-redux-form';
 function RenderCard(props) {
     if(props.weather.location != null) {
         var temp= props.weather.temp.toFixed()+'°c';
-        var iconUrl = 'http://openweathermap.org/img/wn/'+props.weather.icon+'@2x.png';
+        var iconUrl = 'https://openweathermap.org/img/wn/'+props.weather.icon+'@2x.png';
         var climate = props.weather.climate.toUpperCase();
     }
     if(props.weather.location != null){
