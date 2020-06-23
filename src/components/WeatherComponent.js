@@ -1,7 +1,38 @@
 import React, {Component} from 'react';
 import '../App.css';
-import { Button, Row, } from 'reactstrap';
-import { LocalForm, Control } from 'react-redux-form';
+import { Row, Card, CardBody } from 'reactstrap';
+import { Form, Control } from 'react-redux-form';
+
+
+function RenderCard(props) {
+    if(props.weather.location != null) {
+        var temp= props.weather.temp.toFixed()+'°c';
+        var iconUrl = 'http://openweathermap.org/img/wn/'+props.weather.icon+'@2x.png';
+        var climate = props.weather.climate.toUpperCase();
+    }
+    if(props.weather.location != null){
+        return(
+            <div>
+                <Card className="card"> 
+                    <CardBody>
+                        <center>
+                        <h3><b>{props.weather.location}</b></h3>
+                        <h6><span className="country">{props.weather.country}</span></h6>
+                        <h1>{temp}</h1>
+                        <img src={iconUrl} alt="climateIcon" />
+                        <p className="climate">{climate}</p>
+                        </center>
+                    </CardBody>
+                </Card>
+            </div>
+        )
+    }
+    else{
+        return(
+            <div></div>
+        )
+    }
+}
 
 
 class Weather extends Component {
@@ -19,36 +50,26 @@ class Weather extends Component {
             location: values.location
         });
         this.props.fetchWeather(values.location);
+        this.props.resetSearch();
     }
 
 
     render() {
         
-        if(this.props.weather.location != null) {
-            var temp= this.props.weather.temp.toFixed()+'°c';
-            var iconUrl = 'http://openweathermap.org/img/wn/'+this.props.weather.icon+'@2x.png';
-        }
         return(
-            <div className="container">
+            <div>
                 <div className="row row-content align-items-center">
-                    <div className="col-sm-8 col-md-4 offset-4">
-                        <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+                    <div className="col-8 col-sm-6 col-md-4 offset-md-4 offset-sm-3 offset-2">
+                        <Form model="search" onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">
-                                    <Control.text model=".location" id="location" name="location" className="form-control" placeholder="Search" />
+                                    <Control.text model=".location" id="location" name="location" className="form-control2" placeholder="Enter your location" />
                             </Row>
-                            <Row className="form-group">
-                                <Button type="submit"><span className="fa fa-search fa-lg"></span></Button>
-                            </Row>
-                        </LocalForm>
+                        </Form>
                     </div>
                 </div>
                 <div className="row row-content align-items-center">
-                    <div className="col-12 col-md-4 offset-4">
-                        <h2>{this.props.weather.location}</h2>
-                        <h5>{this.props.weather.country}</h5>
-                        <img src={iconUrl} />
-                        <h1>{temp}</h1>
-                        <h4>{this.props.weather.climate}</h4>
+                    <div className="col-10 col-sm-8 col-md-4 offset-md-4 offset-sm-2 offset-1">
+                       <RenderCard weather={this.props.weather}/>
                     </div>
                 </div>
             </div>

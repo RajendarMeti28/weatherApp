@@ -1,9 +1,37 @@
-/* body{
-    background-image: url(backImg.png);
-} */
+
 .row-content {
     margin:0px auto;
-    padding: 50px 0px 50px 0px;
-    border-bottom: 1px ridge;
-    min-height:300px;
+    padding: 50px 0px 50px 0px; 
+    min-height:200px;
+}
+
+.climate {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.form-control2 {
+    padding: 20px;
+    width: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    background-image: url('b3.png');
+    background-attachment: fixed;
+}
+
+.card {
+    background-color: #e8e8e8;
+}
+
+.country {
+    padding: 2px 5px 2px 5px;
+    border-radius: 8px;
+    background-color: #ffaa21;
+    color: white;
 }
